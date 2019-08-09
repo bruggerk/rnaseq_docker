@@ -1,5 +1,7 @@
 FROM nfcore/rnaseq
 
+RUN mkdir -p  /scratch /refs/ /cluster /work /tsd /projects /net
+
 RUN apt-get install --assume-yes -qq graphviz && apt-get clean
 
 RUN curl -fsSL get.nextflow.io | bash
