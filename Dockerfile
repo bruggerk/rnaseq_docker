@@ -1,6 +1,6 @@
 FROM nfcore/rnaseq
 
-RUN apt-get install --assume-yes -qq graphviz && apt-get clean
+RUN apt-get install --assume-yes -qq graphviz default-jre && apt-get clean
 
 RUN mkdir -p  /scratch /refs/ /cluster /work /tsd /projects /net
 
