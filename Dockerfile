@@ -1,6 +1,6 @@
 FROM nfcore/rnaseq
 
-RUN apt-get update && apt-get install --assume-yes -qq graphviz default-jre && apt-get clean
+RUN apt-get update && apt-get install --no-install-recommends --assume-yes -qq graphviz default-jre && apt-get clean
 
 RUN mkdir -p  /scratch /refs/ /cluster /work /tsd /projects /net
 
@@ -14,7 +14,7 @@ RUN useradd -U -m -s /bin/bash  nextflow && \
 RUN cd /usr/local/bin/ && curl -fsSL get.nextflow.io | bash && chmod 755 nextflow
 
 RUN su - nextflow -c 'NXF_HOME=/home/nextflow/ nextflow pull nf-core/rnaseq' && \
-    chmod 777 -R /nextflow/
+    chmod 777 -R /home/nextflow/
 
 ENV HOST_USER nextflow
 ENV USER nextflow
