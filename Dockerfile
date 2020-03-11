@@ -11,13 +11,13 @@ RUN useradd -U -m -s /bin/bash  nextflow && \
 
 RUN cd /usr/local/bin/ && curl -fsSL get.nextflow.io | bash && chmod 755 nextflow
 
-RUN su - nextflow -c 'NXF_HOME=/home/nextflow/ nextflow pull nf-core/rnaseq' && \
-    chmod 777 -R /home/nextflow/
+RUN su - nextflow -c 'NXF_HOME=/nextflow/ nextflow pull nf-core/rnaseq' && \
+    chmod 777 -R /nextflow/
 
 ENV HOST_USER nextflow
 ENV USER nextflow
 USER nextflow
-WORKDIR /home/nextflow/
-ENV NXF_HOME /home/nextflow/
+#WORKDIR /home/nextflow/
+ENV NXF_HOME /nextflow/
 
 ENTRYPOINT ["nextflow", "run", "nf-core/rnaseq"]
